@@ -1,0 +1,134 @@
+<nav class="navigation">
+    <ul>
+        <li>
+            <% if(currentRoute === '/'){ %> 
+                Home
+            <% } else { %>
+                <a href="/">Home</a>
+            <% } %>
+        </li>
+        <li>
+            <% if(currentRoute === '/faleConosco'){ %> 
+                Contate-nos
+            <% } else { %>
+                <a href="/faleConosco">Contate-nos</a>
+            <% } %>
+        </li>
+        <% if(user){ %>
+            <% if(user.tipo === 'admin'){ %>
+                <li>
+                    <% if(currentRoute === '/admin'){ %> 
+                        Admin
+                    <% } else { %>
+                        <a href="/admin">Admin</a>
+                    <% } %>
+                </li>
+            <% } else if(user.tipo === 'vendedor'){ %>
+                <li>
+                    <% if(currentRoute === '/vendedor'){ %> 
+                        Vendedor
+                    <% } else { %>
+                        <a href="/vendedor">Vendedor</a>
+                    <% } %>
+                </li>
+            <% } else if(user.tipo === 'cliente'){ %>
+                <li>
+                    <% if(currentRoute === '/cliente'){ %> 
+                        Cliente
+                    <% } else { %>
+                        <a href="/cliente">Cliente</a>
+                    <% } %>
+                </li>
+            <% } %>
+                <li>
+                    <% if(currentRoute === '/logout'){ %>
+                        Sair
+                    <% } else { %>
+                        <a href="/logout">Sair</a>
+                    <% } %>
+                </li>
+            <% } else { %>
+                <li>
+                    <% if(currentRoute === '/login'){ %>
+                        Entrar
+                    <% } else { %>
+                        <a href="/login">Entrar</a>
+                    <% } %>
+                </li>
+            <% } %>
+            <span class="material-symbols-outlined" id="filtro-icon">search</span>
+            <div id="filtro-container" class="hidden-filtro">
+                <input type="text" id="filtro-input" placeholder="Filtrar imóveis...">
+                <button id="filtro-btn">Pesquisar</button>
+            </div>
+            <section id="imoveis-pesquisa" class="imoveis hidden-filtro">
+                <button id="fechar-pesquisa">X</button>
+                <div id="resultado-pesquisa"></div>
+            </section>
+    </ul>
+</nav>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const filtroIcon = document.getElementById('filtro-icon');
+        const filtroContainer = document.getElementById('filtro-container');
+        const filtroInput = document.getElementById('filtro-input');
+        const filtroBtn = document.getElementById('filtro-btn');
+        const pesquisaSection = document.getElementById('imoveis-pesquisa');
+        const fecharPesquisa = document.getElementById('fechar-pesquisa');
+        const resultadoPesquisa = document.getElementById('resultado-pesquisa');
+        
+        // Exibir/ocultar filtro
+        filtroIcon.addEventListener('click', () => {
+            filtroContainer.classList.toggle('hidden-filtro');
+        });
+        // Fechar filtro ao clicar fora
+        document.addEventListener('click', (e) => {
+            if(!filtroContainer.contains(e.target) && e.target !== filtroIcon){
+                filtroContainer.classList.add('hidden-filtro');
+            }
+        });
+        // Buscar imóveis
+        filtroBtn.addEventListener('click', async () => {
+            const termo = filtroInput.value.trim();
+            
+            if(!termo){
+                return alert('Digite um termo para buscar.');
+            }
+            try {
+                const response = await fetch(`/api/buscar?termo=${encodeURIComponent(termo)}`);
+                if(!response.ok){
+                    throw new Error('Falha ao buscar imóveis.', response.status);
+                }
+                const data = await response.json();
+
+                if(data.imoveis && data.imoveis.length > 0){
+                    //resultadoPesquisa.innerHTML = '';
+                    resultadoPesquisa.innerHTML = data.imoveis
+                        .map((imovel) => `
+                        <div class="card">
+                            <img src="${imovel.imagemPrincipal || '/assets/images/imagem-padrao02.svg'}" alt="${imovel.Descricao_previa}" />
+                            <h3>${imovel.Descricao_previa}</h3>
+                            ${data.logado ? '<button>Favoritar</button>' : ''}
+                        </div>
+                        `)
+                        .join('');
+                    pesquisaSection.classList.remove('hidden-filtro');
+                }else{
+                    resultadoPesquisa.innerHTML = '<p>Nenhum imóvel encontrado.</p>';
+                    alert('Nenhum imóvel encontrado.');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar imóveis: ', error);
+                alert('Ocorreu um erro ao buscar os imóveis.');
+            }
+        });
+
+        // Fechar resultados da pesquisa
+        fecharPesquisa.addEventListener('click', () => {
+            pesquisaSection.classList.add('hidden-filtro');
+            resultadoPesquisa.innerHTML = '';
+        });
+    });
+</script>

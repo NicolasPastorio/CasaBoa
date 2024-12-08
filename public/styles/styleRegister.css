@@ -1,0 +1,74 @@
+.main-image{
+    height: 786px;
+}
+.info-content{
+    height: 701px;
+}
+#form{
+    position: relative;
+    background: rgba(84, 103, 197, 0.82);
+    border-radius: 10px;
+    padding: 60px;
+    width: min-content;
+    pointer-events: all;
+}
+.title{
+    font-size: 1.8em;
+    margin-bottom: 10%;
+}
+.input{
+    min-width: 280px;
+    background-color: transparent;
+    border-radius: 22px;
+    border: 2px white solid;
+    padding: 5px;
+    margin: 0px 0px 12px -5px;
+}
+.input i{
+    font-size: 1.2em;
+    padding: 5px;
+    background: -webkit-linear-gradient(-45deg, #ffce51, #ff7253, #fd5754);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.input input{
+    width: 80%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    transform: translateY(-10%);
+    color: white;
+    font-size: 11pt;
+}
+.input input::placeholder{
+    color: white;
+}
+#btn{
+    margin-top: 10%;
+    width: 100%;
+    text-align: center;
+}
+#btn a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+#btn button, #btn a{
+    background: var(--btn-gradient);
+    width: 100%;
+    height: 40px;
+    border: none;
+    font-size: 1.2em;
+    color: #fff;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+}
+#btn button:hover, #btn a:hover{
+    background: linear-gradient(-45deg, #eec04c, #ec7054, #ee5a57);
+}
+footer{
+    margin-top: 16.3px;
+}

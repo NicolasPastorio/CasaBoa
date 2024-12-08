@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fale conosco</title>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="/styles/GlobalStyle.css">
+        <link rel="stylesheet" href="/styles/mainStyle.css">
+        <link rel="stylesheet" href="/styles/faleConoscoStyle.css">
+        <!-- Google material icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="main-logo">
+                <h1 class="logo"><img src="/assets/images/logo.webp" alt="Logo do site"></h1>
+                <!-- Menu de navegação -->
+                <%- include('./layouts/menu'); %>
+            </header>
+            <div class="main-image"></div>
+            <main class="main-content">
+                <section class="info-content">
+                    <article class="left">
+                        <form id="form" action="https://formsubmit.co/nicolasfernandosap@gmail.com" method="POST">
+                            <!-- Name -->
+                            <label for="username">Seu nome*</label>
+                            <div class="input">
+                                <input type="text" name="username" id="username" placeholder="Username" required>
+                            </div>
+                            <!-- email -->
+                            <label for="email">Seu e-mail*</label>
+                            <div class="input">
+                                <input type="email" id="email" name="email" placeholder="Email" required><br>
+                             </div>
+                            <!-- telefone -->
+                            <label for="senha">Seu telefone*</label>
+                            <div class="input">
+                                <input type="text" id="telefone" name="telefone" placeholder="telefone" required>
+                            </div>
+                            <!-- Área de texto para mensagem -->
+                             <label for="mensagem">Mensagem</label>
+                             <div class="input">
+                                <textarea name="mensagem" class="areaMensagem" cols="70" rows="3" required spellcheck="true" wrap="hard">                                    
+                                </textarea>
+                             </div>
+                            <!-- botão -->
+                            <div id="btn">
+                                <button type="submit">Enviar</button>
+                            </div>
+                        </form>
+                    </article>
+                    <article class="right">
+                        <h2>Fale conosco</h2>
+                        <p>Nos envie uma mensagem preenchendo o formulário, entraremos em contato o mais rápido possível.</p>
+                        <p>Se preferir, tire suas dúvidas através do telefone</p>
+                        <p><span class="contato">(51) 5551-0166</span></p>
+                    </article>
+                </section>
+            </main>
+            <!--Footer-->
+            <%- include('./layouts/footer'); %>
+            <!--Footer-->
+        </div> 
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "site-casa-boa",
+  "version": "1.0.0",
+  "description": "![maintenance-status](https://img.shields.io/badge/maintenance-experimental-blue.svg)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./App.js localhost 3000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-fileupload": "^1.5.1",
+    "express-session": "^1.18.1",
+    "mysql2": "^3.11.3",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

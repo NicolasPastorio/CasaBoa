@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="/styles/GlobalStyle.css">
+        <link rel="stylesheet" href="/styles/mainStyle.css">
+        <link rel="stylesheet" href="/styles/styleCliente.css">
+        <!-- Google material icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="main-logo">
+                <h1 class="logo"><img src="/assets/images/logo.webp" alt="Logo do site"></h1>
+                <!-- Menu de navegação -->
+                <%- include('./layouts/menu'); %>
+            </header>
+            <div class="main-image"></div>
+            <main class="main-content">
+                <section class="info-content">
+                    <h2>Área do Cliente</h2>
+                    <p>Bem-vindo, <%= user.nome %></p>
+                </section>
+                <section class="favoritos">
+                    <h3 class="titulo-favoritos">Meus imóveis favoritos</h3>
+                    <% if(imoveisFavoritos && imoveisFavoritos.length > 0){ %> 
+                        <div class="conteudo-favoritos">
+                            <% imoveisFavoritos.forEach(imovel => { %> 
+                                <article class="card-favoritos">
+                                    <img src="<%= imovel.imagemURL %>" 
+                                        alt="Imagem para visualização prévia">
+                                    <div class="conteudo-card">
+                                        <p><%= imovel.Descricao_previa %></p> 
+                                    </div>
+                                    <div class="botoes">
+                                        <div class="btn-card">
+                                            <a href="/visitar/<%= imovel.idImovel %>">Visitar</a>
+                                        </div>
+                                        <form class="form-favoritar" action="/removerFavorito" method="POST">
+                                            <input type="hidden" name="idImovel" value="<%= imovel.idImovel %>">
+                                            <button type="submit">
+                                                <span class="btn-favoritar">
+                                                    &#9829;
+                                                </span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </article>
+                            <% }); %>
+                        </div>
+                    <% }else{ %> 
+                        <p>Nenhum imóvel favorito ainda.</p>
+                    <% } %>
+                </section>
+            </main>
+            <!--Footer-->
+            <%- include('./layouts/footer'); %>
+            <!--Footer-->
+        </div> 
+    </body>
+</html>

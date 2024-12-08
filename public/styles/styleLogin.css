@@ -1,0 +1,16 @@
+.main-image{
+    height: 625px;
+}
+.info-content{
+    height: 540px;
+}
+.input i{
+    font-size: 1.2em;
+    padding: 5px;
+    background: -webkit-linear-gradient(-45deg, #ffce51, #ff7253, #fd5754);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+footer{
+    margin-top: 16px;
+}

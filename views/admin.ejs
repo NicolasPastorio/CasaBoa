@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Dashboard</title>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="/styles/GlobalStyle.css">
+        <link rel="stylesheet" href="/styles/mainStyle.css">
+        <link rel="stylesheet" href="/styles/styleForm.css">
+        <!-- Estilo Personalizado-->
+        <link rel="stylesheet" href="/styles/styleAdmin.css"> 
+        <!-- Google material icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="main-logo">
+                <h1 class="logo"><img src="/assets/images/logo.webp" alt="Logo do site"></h1>
+                <!-- Menu de navegação -->
+                <%- include('./layouts/menu'); %>
+            </header>
+            <div class="main-image"></div>
+            <main class="main-content">
+                <section class="info-content">
+                    <h2>Painel do administrador</h2>
+                </section>
+                <section class="add-vendedor">
+                    <% if (success_msg) { %>
+                        <p class="success-message"><%= success_msg %></p>
+                    <% } %>
+                    <% if (error_msg) { %>
+                        <p class="error-message"><%= error_msg %></p>
+                    <% } %>
+                    <form id="form" action="/adicionarVendedor" method="POST">
+                        <h3 class="title">Adicionar Vendedor</h3>
+                        <label for="email">Email:</label>
+                        <div class="input">
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <label for="senha">Senha:</label>
+                        <div class="input">
+                            <input type="password" id="senha" name="senha" required>
+                        </div>
+                        <label for="nome">Nome:</label>
+                        <div class="input">
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <label for="dataNascimento">Data de Nascimento:</label>
+                        <div class="input">
+                            <input type="date" id="dataNascimento" name="dataNascimento" required>
+                        </div>
+                        <label for="endereco">Endereço:</label>
+                        <div class="input">
+                            <input type="text" id="endereco" name="endereco" required>
+                        </div>
+                        <label for="telefone">Telefone:</label>
+                        <div class="input">
+                            <input type="text" id="telefone" name="telefone" required>
+                        </div>
+                        <div id="btn">
+                            <button type="submit">Adicionar Vendedor</button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+            <!--Footer-->
+            <%- include('./layouts/footer'); %>
+            <!--Footer-->
+        </div> 
+    </body>
+    <script src="/scripts/btnVerMais.js"></script>
+</html>

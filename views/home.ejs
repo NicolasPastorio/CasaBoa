@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home</title>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="/styles/GlobalStyle.css">
+        <link rel="stylesheet" href="/styles/mainStyle.css">
+        <link rel="stylesheet" href="/styles/styleHome.css">
+        <!-- Google material icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
+    <body>
+        <div class="main-container">
+            <header class="main-logo">
+                <h1 class="logo"><img src="/assets/images/logo.webp" alt="Logo do site"></h1>
+                <!-- Menu de navegação -->
+                <%- include('./layouts/menu'); %>
+            </header>
+            <div class="main-image"></div>
+            <main class="main-content">
+                <section class="info-content">
+                    <img src="../assets/images/logo.webp" alt="">
+                    <p>Planejando e realizando sonhos</p>
+                    <div class="btn-actions">
+                        <button class="btn-buscar"><a href="/faleConosco">Entrar em contato</a></button>
+                        <button class="btn-quemSomos"><a href="#sobre">Quem somos</a></button>
+                    </div>
+                </section>
+                <% if(categoriasComImoveis && categoriasComImoveis.length > 0){ %>
+                    <% categoriasComImoveis.forEach(item => { %>
+                        <section class="categorias categoria-<%= item.categoria.Nome.toLowerCase() %>">
+                            <h3 class="titulo-categorias"><%= item.categoria.Nome %> disponíves para venda</h3>
+                            <div class="conteudo-categorias" id="conteudo-<%= item.categoria.idCategorias %>">
+                                <% if(item.imoveis && item.imoveis.length >0){ %>
+                                    <% item.imoveis.forEach(imovel => { %>
+                                        <article class="card-categorias">
+                                            <img src="<%= imovel.imagemURL %>" 
+                                                alt="Imagem para visualização prévia"> 
+                                                <!--   <img  src="../assets/images/imagem-exemplo.jpeg" 
+                                                alt="Imagem para visualização prévia">--> 
+                                            <div class="conteudo-card">
+                                                <!-- <p><%= imovel.Descricao %></p> -->
+                                                <p><%= imovel.Descricao_previa %></p>
+                                            </div>
+                                            <div class="botoes">
+                                                <div class="btn-card">
+                                                    <a href="/visitar/<%= imovel.idImovel %>">Visitar</a>
+                                                    <% console.log('id do imovel ao clicar na home: ', imovel.idImovel) %>
+                                                </div>
+                                                <% if(user && user.tipo === 'cliente'){ %>
+                                                    <% const favoritado = imoveisFavoritos.some(fav => fav.idImovel === imovel.idImovel); %>
+                                                    <% if(favoritado) { %> 
+                                                        <!-- Botão para desfavoritar -->
+                                                        <form class="form-favoritar" action="/removerFavorito" method="POST">
+                                                            <input type="hidden" name="idImovel" value="<%= imovel.idImovel %>">
+                                                            <button type="submit">
+                                                                <span class="btn-favoritar true">
+                                                                    &#9829;
+                                                                </span>
+                                                            </button> <!-- RemoverFavorito -->
+                                                        </form>
+                                                    <% } else{ %>
+                                                        <!-- Botão para favoritar -->
+                                                        <form class="form-favoritar" action="/favoritar" method="POST">
+                                                            <input type="hidden" name="idImovel" value="<%= imovel.idImovel %>">
+                                                            <button type="submit">
+                                                                <span class="btn-favoritar false">
+                                                                    &#9829;
+                                                                </span>
+                                                            </button><!-- Favoritar -->
+                                                        </form>
+                                                    <% } %>
+                                                <% } %>
+                                            </div>
+                                        </article> 
+                                    <% }); %> 
+                                <% }else{ %> 
+                                    <p>Nenhum imóvel foi adicionado ainda.</p>
+                                <% } %> 
+                            </div>
+                                <% if (item.imoveis.length > 3) { %>
+                                    <button onclick="verMais(<%= item.categoria.idCategorias %>)" class="btn-card btn-ver-mais">Ver mais</button>
+                                <% } %>
+                        </section>
+                    <% }); %> 
+                <% }else{ %> 
+                    <p>Nenhuma categoria foi adicionada ainda.</p>
+                <% } %>         
+                <section id="sobre">
+                    <article class="left">
+                        <h2 class="titulo-sobre">Focamos em oferecer profissionalismo e competência</h2>
+                        <p class="descricao-sobre"> 
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type 
+                            specimen book.
+                        </p>
+                    </article>
+                    <article class="right">
+                        <div class="visao01-sobre">
+                            <img src="/assets/images/trust.png" alt="Confiança" class="icon-valores">
+                            <h3>Confiança</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                        <div class="visao02-sobre">
+                            <img src="/assets/images/credibility.png" alt="Confiança" class="icon-valores">
+                            <h3>Credibilidade</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                        <div class="visao03-sobre">
+                            <img src="/assets/images/ethics.png" alt="Confiança" class="icon-valores">
+                            <h3>Ética</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                        </div>
+                    </article>
+                </section>
+            </main>
+            <!--Footer-->
+            <%- include('./layouts/footer'); %>
+            <!--Footer-->
+        </div> 
+    </body>
+    <script src="/scripts/btnVerMais.js"></script>
+</html>

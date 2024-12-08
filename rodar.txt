@@ -1,0 +1,10 @@
+abra o terminal na pasta e de o seguinte comando: node App.js
+abra em qualquer navegador: http://localhost:3000
+
+instalações: 
+
+mkdir meu_projeto
+cd meu_projeto
+npm init -y
+npm install express mysql2 dotenv ejs passport express-session bcryptjs passport-local
+mkdir controllers models views routes public

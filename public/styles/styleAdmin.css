@@ -1,0 +1,16 @@
+.main-image{
+    height: 953px;
+}
+.info-content{
+    height: 126px;
+}
+.add-vendedor{
+    color: var(--primary-font);
+    position: relative;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 94px;
+}

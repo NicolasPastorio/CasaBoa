@@ -1,0 +1,77 @@
+.favoritos{
+    margin-top: -19px;
+    background-color: var(--secondary-color);
+    padding: 20px 0px;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.titulo-favoritos{
+    color: var(--tertiary-font);
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+.conteudo-favoritos{
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.card-favoritos{
+    background-color: var(--background-primary);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.card-favoritos img{
+    /*width: 90%;*/
+    height: 250px;
+    margin-top: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.conteudo-card{
+    margin: 10px 0px;
+}
+.btn-card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--btn-dark);
+    width: 100%;
+    height: 100%;
+    border: none;
+    font-size: 1.2em;
+    color: #fff;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+.btn-card a{
+    width: 100%;
+    text-align: center;
+}
+.btn-card:hover{
+    transition: all 0.4s ease-in-out;
+    background: var(--btn-light);
+}
+.botoes{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.form-favoritar button{
+    background-color: transparent;
+}
+.btn-favoritar{
+    font-size: 30px;
+    margin-left: 10px;
+    color: #F50E36;
+}

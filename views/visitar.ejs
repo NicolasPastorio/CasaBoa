@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ver mais</title>
+        <!-- Estilos -->
+        <link rel="stylesheet" href="/styles/GlobalStyle.css">
+        <link rel="stylesheet" href="/styles/styleVisitar.css">
+        <!-- Google material icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    </head>
+    <body>
+        <div class="main-container">
+            <div class="main-image"></div>
+            <main class="main-content">
+                <!-- <section class="info-content">
+                    <img src="../assets/images/logo.webp" alt="Imagem do logo">
+                </section> -->
+                <section class="card-title">
+                    <% if(imovel.imagem_principal){ %> 
+                        <img src="data:image/jpeg;base64, <%= imovel.imagem_principal.toString('base64') %>" 
+                            alt="Imagem Principal">    
+                    <% }else{ %> 
+                        <p>Imagem principal indisponível </p>    
+                    <% } %>
+                    <a href="<%= previousUrl %>">Voltar</a>
+                </section>
+                <section class="imovel-detalhes">   
+                    <p><%= imovel.Descricao_previa %></p>
+                    <h3>Localização</h3>
+                    <p><%= imovel.Endereco %></p>
+                    <h3>Preço</h3>
+                    <p>R$ <%= imovel.Preco %></p>
+                    <p><%= imovel.Descricao_detalhada %></p>
+                </section>
+                <section class="imovel-imagens">
+                    <h3>Imagens do Imóvel</h3>
+                    <% if(imagens && imagens.length > 0){ %> 
+                        <div class="galeria">
+                            <% imagens.forEach(imagem => { %> 
+                                <div class="imagem-item">
+                                    <!-- as imagens da tabela Imagens deveriam aparecer aqui -->
+                                    <img src="<%= imagem.url %>" alt="Imagem do imóvel">
+                                </div>
+                            <% }); %> 
+                        </div>    
+                    <% }else{ %> 
+                        <p>Nenhuma imagem disponível.</p>
+                    <% } %>
+                </section>
+                <section class="negociar">
+                    <a href="https://wa.me/55198727231?text=Oi,%20gostaria%20de%20saber%20mais%20sobre%20o%20imovel<%= imovel.Descricao_previa %>"
+                        target="_blank">
+                        Entrar em contato
+                    </a>
+                </section>
+            </main>
+        </div> 
+    </body>
+    <script src="/scripts/btnVerMais.js"></script>
+</html>

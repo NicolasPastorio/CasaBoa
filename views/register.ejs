@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/styles/GlobalStyle.css">
+    <link rel="stylesheet" href="/styles/mainStyle.css">
+    <!-- Estilo Personalizado-->
+    <!-- <link rel="stylesheet" href="/styles/styleLogin.css"> -->
+    <link rel="stylesheet" href="/styles/styleRegister.css"> 
+    <!-- Google material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> 
+</head>
+    <body>
+        <div class="main-container">
+            <header class="main-logo">
+                <h1 class="logo"><img src="/assets/images/logo.webp" alt="Logo do site"></h1>
+                <!-- Menu de navegação -->
+                <%- include('./layouts/menu'); %>
+            </header>
+            <div class="main-image"></div>
+            <main class="main-content">
+                <section class="info-content">
+                    <form id="form" action="/cadastrar" method="POST">
+                        <h2 class="title">Cadastrar</h2>
+                        <!-- Name -->
+                        <label for="username">Nome</label>
+                        <div class="input">
+                            <input type="text" name="nome" id="username" placeholder="Username" required>
+                        </div>
+                        <!-- email -->
+                        <label for="email">Email</label>
+                        <div class="input">
+                            <input type="email" id="email" name="email" placeholder="Email" required><br>
+                        </div>
+                        <!-- senha -->
+                        <label for="senha">Senha</label>
+                        <div class="input">
+                            <input type="password" id="senha" name="senha" placeholder="Password" required>
+                        </div>
+                        <!-- telefone -->
+                        <label for="telefone">Telefone</label>
+                        <div class="input">
+                            <input type="text" id="telefone" name="telefone" placeholder="Telefone" required><br>
+                        </div>
+                        <!-- Endereço -->
+                        <label for="endereco">Endereço</label>
+                        <div class="input">
+                            <input type="text" id="endereco" name="endereco" placeholder="Endereço" required><br>
+                        </div>
+                        <!-- Data de nascimento -->
+                        <label for="dataNascimento">Data de nascimento</label>
+                        <div class="input">
+                            <!-- <input type="text"   placeholder="Data de nascimento" required><br> -->
+                            <input type="date" id="dataNascimento" name="dataNascimento" value="2024-11-09" min="1980-01-01" max="2030-12-31" required /><br>
+                        </div>
+                        <!-- botão -->
+                        <div id="btn">
+                            <button type="submit">Cadastrar</button>
+                        </div>
+                    </form>
+                    <!-- <div id="btn">
+                        <a href="/cadastrar">Cadastrar</a> 
+                        <button href="/cadastrar" type="submit">Cadastrar</button>
+                    </div> -->
+                </section>
+                <section class="emphasis-content">
+                    <article class="card">
+
+                    </article>
+                </section>
+            </main>
+            <!--Footer-->
+            <%- include('./layouts/footer'); %>
+            <!--Footer-->
+        </div> 
+    </body>
+</html>

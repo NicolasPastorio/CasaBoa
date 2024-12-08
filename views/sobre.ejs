@@ -1,0 +1,42 @@
+<!-- ESTA PÁGINA NÃO ESTÁ SENDO USADA, EM ANÁLISE PARA SER DELETADA -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/styles/GlobalStyle.css">
+    <link rel="stylesheet" href="./css/mainStyle.css">
+    <!-- Google material icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+    <body>
+        <div class="main-container">
+            <header class="main-logo">
+                <h1 class="logo"><img src="./assets/images/logo.webp" alt="Logo do site"></h1>
+                <!-- Menu de navegação -->
+                <%- include('./layouts/menu'); %>
+            </header>
+            <div class="main-image"></div>
+            <main class="main-content">
+                <section class="info-content">
+                    <img src="./assets/images/logo.webp" alt="">
+                    <p>Planejando e realizando sonhos</p>
+                    <div class="btn-actions">
+                        <button class="btn-buscar">Buscar imóvel</button>
+                        <button class="btn-quemSomos">Quem somos</button>
+                    </div>
+                </section>
+                <section class="emphasis-content">
+                    <article class="card">
+
+                    </article>
+                </section>
+            </main>
+            <!--Footer-->
+            <%- include('./layouts/footer'); %>
+            <!--Footer-->
+        </div> 
+    </body>
+</html>

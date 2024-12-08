@@ -1,0 +1,92 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+}
+a{
+    color: var(--primary-color);
+}
+.main-image{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-image: url('../assets/images/main-image.jpeg');  
+    background-size: cover; 
+    background-position: center;
+    z-index: 1;
+}
+.main-image::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+.main-content{
+    width: 100%;
+    height: 100vh;
+    color: var(--primary-font);
+    /*height: 420px;*/
+    /*background-color: var(--primary-font);*/
+    position: relative;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+}
+.card-title{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 300px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--btn-dark);
+    background-color: var(--primary-font);
+    border-radius: 10px;
+}
+.card-title img{
+    width: 120px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.card-title a{
+    color: var(--btn-dark);
+    font-weight: bold;
+    margin-right: 10px;
+}
+section.imovel-imagens{
+    max-width: 100%;
+    text-align: center;
+    padding: 10px 40px;
+}
+section.imovel-imagens h3{
+    margin: 20px 0;
+    font-size: 1.5em;
+    color: var(--btn-dark);
+    font-weight: bold;
+    text-shadow: #011 1px 0 10px;
+}
+.galeria{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+}
+.imagem-item{
+    margin-right: 20px;
+}
+.imagem-item img{
+    width: 220px;
+    height: 150px;
+}
